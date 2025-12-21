@@ -173,8 +173,8 @@ a:link,a:visited,.widget_bottom h1,.widget_bottom .caption{color:#ffffff}.bg-ria
   document.addEventListener("DOMContentLoaded", () => {
     const slug = getSlug();
     const canonicalUrl = slug
-      ? `https://skor.beritanasional.eu.org/${slugify(slug)}`
-      : "https://skor.beritanasional.eu.org/";
+      ? `https://idn21.score808.eu.org/${slugify(slug)}`
+      : "https://idn21.score808.eu.org/";
 
     const link = document.querySelector('link[rel="canonical"]');
     if (link) {
@@ -236,12 +236,6 @@ a:link,a:visited,.widget_bottom h1,.widget_bottom .caption{color:#ffffff}.bg-ria
 </div>
 <!-- <iframe id='score808frame' scrolling='no' src='https://official.score808.my.id/p/match.html' style='width: 100%; border: none;'></iframe>-->
 <br/>
-	<div class="container">
-    <div id="content"><p>Memuat pertandingan Score808...</p></div>
-    <script type="application/ld+json" id="jsonld-news"></script>
-  </div>
-   <h2 class="section-title">Live skor Pertandingan Hari Ini</h2>
-<div class="container" id="matchfeed"></div>
 </div>
 		<div class='logo-footer'>
 			<svg width='32' height='32' viewBox="0 0 24 24">
@@ -259,10 +253,15 @@ window.addEventListener("message", function(e) {
   });
   //]]> </script>-->
 	<script>const csvUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vROt3pmJnkM-VSHQXvSg2F8KAENpEaGpwRQlefKMietohRsJ11DnWvoU49rihJof_X0f5gQQ7Hys5NV/pub?gid=0&single=true&output=csv",defaultImage="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiP9J-vhmnelhXvNyqoiKeceFH48TfKZn05R9xk2M1rf6-YSy8wC2QnMfjJ98YGVAYG5felpzI9JxuqHIRhCqxbYblKMyIQ3s0A-v0Mj00Td4jbezg1Qog5x6TMaq-VLAC7Vrrsclecnpx8LXPncYlSKMRmDgkPsp7ywN3l1ucPNwZCey4IQtsj5VNCoRP7/s1600/score808-berita-placeholder.png";function slugify(t){return(t||"").toLowerCase().replace(/[^a-z0-9\s-]/g,"").replace(/\s+/g,"-").replace(/-+/g,"-").trim()}function getSlug(){return location.hash.replace(/^#\/?/,"")}function parseCsv(t){const e=[],n=t.split(/\r?\n/);let r=[],a=!1,o="";for(const t of n){let n=0;for(;n<t.length;){const e=t[n];'"'===e?a&&'"'===t[n+1]?(o+='"',n+=2):(a=!a,n++):","===e&&!a?(r.push(o),o="",n++):(o+=e,n++)}a?o+="\n":(r.push(o),e.push(r),r=[],o="")}const i=e[0];return e.slice(1).map((t=>{const e={};return i.forEach(((n,r)=>e[n.trim()]=t[r]||"")),e}))}function loadContentBySlug(t,e){const n=e.find((e=>slugify(e.Judul)===t)),r=document.getElementById("content");if(!n)return void(r.innerHTML="<p>Artikel tidak ditemukan.</p>");const a=n.Judul,o=n["Isi Artikel"],i=o.replace(/<[^>]*>?/gm,"").substring(0,160),c=n["Logo Home"]||n["Logo Away"]||defaultImage,s=new Date(`${n.Tanggal} ${n.Jam||"00:00"}`.replace(/\//g,"-")).toISOString();document.title=a,document.querySelector('meta[name="description"]')?.setAttribute("content",i),document.querySelector('meta[property="og:title"]')?.setAttribute("content",a),document.querySelector('meta[property="og:description"]')?.setAttribute("content",i),document.querySelector('meta[property="og:url"]')?.setAttribute("content",location.href),document.querySelector('meta[property="og:image"]')?.setAttribute("content",c),document.querySelector('meta[name="twitter:title"]')?.setAttribute("content",a),document.querySelector('meta[name="twitter:description"]')?.setAttribute("content",i),document.querySelector('meta[name="twitter:image"]')?.setAttribute("content",c);const l={["@context"]:"https://schema.org",["@type"]:"NewsArticle",mainEntityOfPage:{["@type"]:"WebPage","@id":location.href},headline:a,image:[c],datePublished:s,dateModified:s,author:{["@type"]:"Organization",name:"Score808"},publisher:{["@type"]:"Organization",name:"Score808",logo:{["@type"]:"ImageObject",url:defaultImage}},description:i},d=document.getElementById("jsonld-news");if(d)d.textContent=JSON.stringify(l);else{const t=document.createElement("script");t.type="application/ld+json",t.id="jsonld-news",t.textContent=JSON.stringify(l),document.head.appendChild(t)}r.innerHTML=o,window.scrollTo({top:0,behavior:"smooth"})}fetch(csvUrl).then((t=>t.text())).then((t=>{const e=parseCsv(t);loadContentBySlug(getSlug(),e),window.addEventListener("hashchange",(()=>{loadContentBySlug(getSlug(),e)}))})).catch((t=>{console.error(t),document.getElementById("content").innerHTML="<p>Gagal memuat data.</p>"}));</script>
-
+	<div class="container">
+    <div id="content"><p>Memuat pertandingan Score808...</p></div>
+    <script type="application/ld+json" id="jsonld-news"></script>
+  </div>
+   <h2 class="section-title">Live skor Pertandingan Hari Ini</h2>
+<div class="container" id="matchfeed"></div>
 <script>
 function renderMatchCard(item) {
-  const link = `livescore.html#${slugify(item['Judul'])}`;
+  const link = `https://skor.beritanasional.eu.org#${slugify(item['Judul'])}`;
   const homeTeam = item['Team A'];
   const awayTeam = item['Team B'];
   const homeLogo = item['Logo Home'];
